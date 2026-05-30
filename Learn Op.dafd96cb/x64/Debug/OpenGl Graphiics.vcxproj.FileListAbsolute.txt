@@ -1,0 +1,2 @@
+C:\Users\awais\Desktop\OpenGl_Learning_Practices_lecture_no_1\OpenGl Graphiics\x64\Debug\glfw3.dll
+C:\Users\awais\Desktop\OpenGl_Learning_Practices_lecture_no_1\OpenGl Graphiics\Learn Op.dafd96cb\x64\Debug\OpenGl G.4704DB06.Up2Date
