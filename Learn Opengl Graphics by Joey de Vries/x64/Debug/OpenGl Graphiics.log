@@ -1,0 +1,4 @@
+﻿  lecture_no-1.cpp
+C:\DEv\VCPKG\vcpkg\installed\x64-windows\include\glad\glad.h(27,1): error C1189: #error:  OpenGL header already included, remove this include, glad already provides it
+  (compiling source file 'src/lecture_no-1.cpp')
+  
