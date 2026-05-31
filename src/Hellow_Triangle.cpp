@@ -58,6 +58,71 @@ int main()
 	GL_STATIC_DRAW tells OpenGL that the data
 	will be uploaded once and used many times.
 */
+
+	/*#######---------SHADERS-----------########*/
+	const char* vertexShaderSource =
+		"#version 330 core\n"
+		"layout (location = 0) in vec3 aPos;\n"
+		"void main()\n"
+		"{\n"
+		"gl_Position=vec4(aPos.x,aPos.y,aPos.z,1.0f);\n"
+		"}"; ;
+	unsigned int vertexShader;
+	vertexShader = glCreateShader(GL_VERTEX_SHADER);
+
+	glShaderSource(vertexShader, 1, &vertexShaderSource, NULL);
+	glCompileShader(vertexShader);
+	const char* fragmentShaderSource = R"(
+		#version 330 core
+		out vec4 FragColor;
+		void main()
+		{
+		FragColor=vec4(1.0f,0.5f,0.3f,0.1f);
+		}
+		)";
+	unsigned int fragmentShader;
+	fragmentShader = glCreateShader(GL_FRAGMENT_SHADER);
+
+	glShaderSource(fragmentShader, 1, &fragmentShaderSource, NULL);
+	glCompileShader(fragmentShader);
+
+
+/*################-----------SHADER ERROR HANDLER-----------###################*/
+	int successVertexShader;
+	char infologVertex[512];
+	glGetShaderiv(vertexShader, GL_COMPILE_STATUS, &successVertexShader);
+	//get the complile status;
+	if (!successVertexShader)
+	{
+		glGetShaderInfoLog(vertexShader, 512, NULL, infologVertex);
+		std::cout << "ERRO IN COMPILING THE VERTEX SHADER" << infologVertex << std::endl;
+	}
+
+	int successFragmentShader;
+	char infologFramgent[512];
+	glGetShaderiv(fragmentShader, GL_COMPILE_STATUS, &successFragmentShader);
+	if (!successFragmentShader)
+	{
+		glGetShaderInfoLog(fragmentShader, 512, NULL, infologFramgent);
+		std::cout << "ERROR IN COMPILING THE FRAGMENT SHADER:\t" << infologFramgent << std::endl;
+	}
+
+	/*####---------Shader Program--------###*/
+	unsigned int shaderProgram;
+	shaderProgram = glCreateProgram();
+	glAttachShader(shaderProgram, vertexShader);
+	glAttachShader(shaderProgram, fragmentShader);
+	glLinkProgram(shaderProgram);
+
+	int successShaderProgram;
+	char infoLogProgram[512];
+	glGetProgramiv(shaderProgram, GL_LINK_STATUS, &successShaderProgram);
+	if (!successShaderProgram)
+	{
+		glGetProgramInfoLog(shaderProgram,512,NULL,infoLogProgram);
+		std::cout << "ERROR DURING THE LINKING OF THE SHADER PROGRAM" << std::endl;
+	}
+	glUseProgram(shaderProgram);
 	while (!glfwWindowShouldClose(window))
 	{
 		InputBuffer(window);
