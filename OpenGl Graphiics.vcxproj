@@ -130,6 +130,7 @@
   <ItemGroup>
     <ClCompile Include="src\Hellow_Triangle.cpp" />
     <ClCompile Include="src\Hello_Rectangle.cpp" />
+    <ClCompile Include="src\Shaders.cpp" />
     <ClCompile Include="src\Starting_a_ window.cpp" />
     <ClCompile Include="src\lecture_no-1.cpp" />
   </ItemGroup>
