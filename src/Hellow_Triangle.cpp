@@ -6,7 +6,7 @@
 void frameBuffer_fallBack(GLFWwindow* window, int width, int height);
 void InputBuffer(GLFWwindow* window);
 
-int main()
+int helloTriangle()
 {
 	glfwInit();
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
@@ -19,6 +19,8 @@ int main()
 		 0.5f, -0.5  ,0.0f,
 		 0.0f,  0.5f ,0.0f
 	};
+	unsigned int VAO;
+	
 	//this is basically putting the 3D vertex z coordinate to 0 
 	GLFWwindow* window = glfwCreateWindow(800, 600, "HELLO TRIANGLE", NULL, NULL);
 	if (!window)
@@ -38,8 +40,13 @@ int main()
 	}
 	glViewport(0, 0,800,600);
 	glfwSetFramebufferSizeCallback(window, frameBuffer_fallBack);
+	glGenVertexArrays(1, &VAO);
+
+	glBindVertexArray(VAO);
 
 	glGenBuffers(1,&VBO);
+
+
 	glBindBuffer(GL_ARRAY_BUFFER, VBO);
 	glBufferData(GL_ARRAY_BUFFER, sizeof(vertex), vertex, GL_STATIC_DRAW);
 	/*
@@ -122,15 +129,37 @@ int main()
 		glGetProgramInfoLog(shaderProgram,512,NULL,infoLogProgram);
 		std::cout << "ERROR DURING THE LINKING OF THE SHADER PROGRAM" << std::endl;
 	}
+	/*
+	#----------------setting up the vertex data for the the GPU---------#
+	*/
+	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * (sizeof(float)), (void*)0);
+	glad_glEnableVertexAttribArray(0);
+	/*
+	+++++++++++++++++------VAO(Vertex Array Object)-------++++++++++++++++
+	*/
+
+
 	glUseProgram(shaderProgram);
+	glDeleteShader(vertexShader);
+	glDeleteShader(fragmentShader);
+
 	while (!glfwWindowShouldClose(window))
 	{
 		InputBuffer(window);
 		glClearColor(0.2f, 0.3f, 0.4f, 1.0f);
 		glClear(GL_COLOR_BUFFER_BIT);
+
+		glUseProgram(shaderProgram);
+		glBindVertexArray(VAO);
+		glDrawArrays(GL_TRIANGLES, 0, 3);
+
 		glfwSwapBuffers(window);
 		glfwPollEvents();
+
 	}
+	glDeleteVertexArrays(1, &VAO);
+	glDeleteBuffers(1, &VBO);
+	glDeleteProgram(shaderProgram);
 	glfwTerminate();
 	return 0;
 }
