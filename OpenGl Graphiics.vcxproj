@@ -134,6 +134,15 @@
     <ClCompile Include="src\Shaders.cpp" />
     <ClCompile Include="src\Starting_a_ window.cpp" />
     <ClCompile Include="src\lecture_no-1.cpp" />
+    <ClCompile Include="src\textures.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="..\..\..\Downloads\wall.jpg" />
+    <Image Include="img\container.jpg" />
+    <Image Include="img\wall.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="src\stb_image.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

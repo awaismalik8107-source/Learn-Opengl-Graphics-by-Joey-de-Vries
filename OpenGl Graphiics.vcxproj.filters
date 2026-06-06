@@ -33,5 +33,24 @@
     <ClCompile Include="src\multipleAttrib.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\textures.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="..\..\..\Downloads\wall.jpg">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="img\wall.jpg">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="img\container.jpg">
+      <Filter>Resource Files</Filter>
+    </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="src\stb_image.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
