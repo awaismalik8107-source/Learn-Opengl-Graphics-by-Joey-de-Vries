@@ -36,6 +36,9 @@
     <ClCompile Include="src\textures.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\Transformation.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Image Include="..\..\..\Downloads\wall.jpg">
@@ -52,5 +55,14 @@
     <ClInclude Include="src\stb_image.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="src\shader.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="Shaders\transformation.vert" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Shaders\transformation.frag" />
   </ItemGroup>
 </Project>

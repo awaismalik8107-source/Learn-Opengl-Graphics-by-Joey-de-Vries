@@ -135,6 +135,7 @@
     <ClCompile Include="src\Starting_a_ window.cpp" />
     <ClCompile Include="src\lecture_no-1.cpp" />
     <ClCompile Include="src\textures.cpp" />
+    <ClCompile Include="src\Transformation.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="..\..\..\Downloads\wall.jpg" />
@@ -142,7 +143,14 @@
     <Image Include="img\wall.jpg" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\shader.h" />
     <ClInclude Include="src\stb_image.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="Shaders\transformation.vert" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Shaders\transformation.frag" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
